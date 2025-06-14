@@ -1,0 +1,83 @@
+-- Crear base de datos (opcional)
+CREATE DATABASE IF NOT EXISTS SistemaGestion;
+USE SistemaGestion;
+
+-- 1. Usuarios del sistema
+CREATE TABLE Usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    creado_en DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Proyectos
+CREATE TABLE Proyecto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creado_por INT NOT NULL,
+    FOREIGN KEY (creado_por) REFERENCES Usuario(id)
+);
+
+-- 3. Fases del proyecto
+CREATE TABLE Fase (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
+    proyecto_id INT NOT NULL,
+    FOREIGN KEY (proyecto_id) REFERENCES Proyecto(id)
+);
+
+-- 4. Estados posibles de una tarea
+CREATE TABLE EstadoTarea (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- 5. Tareas
+CREATE TABLE Tarea (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    descripcion TEXT,
+    fecha_entrega DATE,
+    fase_id INT NOT NULL,
+    estado_id INT,
+    FOREIGN KEY (fase_id) REFERENCES Fase(id),
+    FOREIGN KEY (estado_id) REFERENCES EstadoTarea(id)
+);
+
+-- 6. Asignación de tareas a usuarios (relación N:M)
+CREATE TABLE TareaUsuario (
+    tarea_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    asignado_en DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (tarea_id, usuario_id),
+    FOREIGN KEY (tarea_id) REFERENCES Tarea(id),
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
+
+-- 7. Relación entre usuario y proyecto con roles
+CREATE TABLE ProyectoUsuario (
+    proyecto_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    rol ENUM('dueno', 'colaborador') DEFAULT 'colaborador',
+    PRIMARY KEY (proyecto_id, usuario_id),
+    FOREIGN KEY (proyecto_id) REFERENCES Proyecto(id),
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
+
+-- 8. Notificaciones para los usuarios
+CREATE TABLE Notificacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    mensaje TEXT NOT NULL,
+    leida TINYINT(1) DEFAULT 0,
+    fecha_creada DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
+
+-- 9. Inserción de estados iniciales
+INSERT INTO EstadoTarea (nombre) VALUES ('pendiente'), ('en_progreso'), ('completada');
