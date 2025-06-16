@@ -8,12 +8,12 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.regex.Pattern;
 
-public class UsuarioDao {
+public class UsuarioService {
 
     // Conexión obtenida del singleton DbConnection
     private final Connection connection;
 
-    public UsuarioDao() {
+    public UsuarioService() {
         this.connection = DbConnection.getInstance().getConnection();
     }
 

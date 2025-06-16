@@ -8,11 +8,11 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.LocalDate;
 
-public class TareaDao {
+public class TareaService {
 
     private final Connection connection;
 
-    public TareaDao() {
+    public TareaService() {
         this.connection = DbConnection.getInstance().getConnection();
     }
 

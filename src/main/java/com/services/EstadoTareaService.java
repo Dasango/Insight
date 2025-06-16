@@ -7,11 +7,11 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
-public class EstadoTareaDao {
+public class EstadoTareaService {
 
     private final Connection connection;
 
-    public EstadoTareaDao() {
+    public EstadoTareaService() {
         this.connection = DbConnection.getInstance().getConnection();
     }
 

@@ -8,11 +8,11 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
 
-public class FaseDao {
+public class FaseService {
 
     private final Connection connection;
 
-    public FaseDao() {
+    public FaseService() {
         this.connection = DbConnection.getInstance().getConnection();
     }
 

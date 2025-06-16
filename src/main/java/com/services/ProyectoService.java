@@ -10,12 +10,12 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ProyectoDao {
+public class ProyectoService {
 
-    private static final Logger LOGGER = Logger.getLogger(ProyectoDao.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ProyectoService.class.getName());
     private final Connection connection;
 
-    public ProyectoDao() {
+    public ProyectoService() {
         this.connection = DbConnection.getInstance().getConnection();
         if (this.connection == null) {
             throw new IllegalStateException("No se pudo establecer conexión con la base de datos.");

@@ -8,11 +8,11 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.LocalDateTime;
 
-public class NotificacionDao {
+public class NotificacionService {
 
     private final Connection connection;
 
-    public NotificacionDao() {
+    public NotificacionService() {
         this.connection = DbConnection.getInstance().getConnection();
     }
 
