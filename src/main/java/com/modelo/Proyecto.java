@@ -1,10 +1,6 @@
 package com.modelo;
 
-import com.data_access_object.ProyectoUsuarioDao;
-import com.data_access_object.UsuarioDao;
 import javafx.beans.property.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -69,7 +65,7 @@ public class Proyecto {
 
     // ✅ Nuevo método con validación de existencia y solo ID
     public void agregarUsuario(int usuarioId) {
-        UsuarioDao usuarioDao = new UsuarioDao();
+        UsuarioService usuarioDao = new UsuarioService();
         Usuario usuario = usuarioDao.obtenerUsuarioPorId(usuarioId);
         if (usuario == null) {
             System.out.println("El usuario con ID " + usuarioId + " no existe.");
@@ -78,7 +74,7 @@ public class Proyecto {
 
         if (!usuarios.contains(usuario)) {
             usuarios.add(usuario);
-            ProyectoUsuarioDao dao = new ProyectoUsuarioDao();
+            ProyectoUsuarioService dao = new ProyectoUsuarioService();
             ProyectoUsuario proyectoUsuario = new ProyectoUsuario(this.getId(), usuarioId, "colaborador");
             boolean asignado = dao.asignarUsuarioAProyecto(proyectoUsuario);
             if (asignado) {
@@ -93,7 +89,7 @@ public class Proyecto {
 
     // ✅ Nuevo método con validación de existencia y solo ID
     public void eliminarUsuario(int usuarioId) {
-        UsuarioDao usuarioDao = new UsuarioDao();
+        UsuarioService usuarioDao = new UsuarioService();
         Usuario usuario = usuarioDao.obtenerUsuarioPorId(usuarioId);
         if (usuario == null) {
             System.out.println("El usuario con ID " + usuarioId + " no existe.");
@@ -102,7 +98,7 @@ public class Proyecto {
 
         if (usuarios.contains(usuario)) {
             usuarios.remove(usuario);
-            ProyectoUsuarioDao dao = new ProyectoUsuarioDao();
+            ProyectoUsuarioService dao = new ProyectoUsuarioService();
             boolean eliminado = dao.eliminarAsignacion(this.getId(), usuarioId);
             if (eliminado) {
                 System.out.println("Usuario " + usuario.getNombre() + " eliminado del proyecto.");

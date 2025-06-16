@@ -1,6 +1,6 @@
 package com.modelo;
 
-import com.data_access_object.NotificacionDao;
+import com.services.NotificacionService;
 import com.interfaces.IObserver;
 
 import java.time.LocalDateTime;
@@ -9,11 +9,11 @@ import java.util.List;
 
 public class SistemaDeNotificaciones {
 
-    private final NotificacionDao notificacionDao;
+    private final NotificacionService notificacionService;
     private final List<IObserver> observadores = new ArrayList<>();
 
     public SistemaDeNotificaciones() {
-        this.notificacionDao = new NotificacionDao();
+        this.notificacionService = new NotificacionService();
     }
 
     // Método para registrar observadores
@@ -43,7 +43,7 @@ public class SistemaDeNotificaciones {
                 LocalDateTime.now()
         );
 
-        boolean resultado = notificacionDao.crearNotificacion(notificacion);
+        boolean resultado = notificacionService.crearNotificacion(notificacion);
 
         if (resultado) {
             System.out.println("Notificación enviada a " + usuario.getNombre() + ": " + mensaje);
@@ -54,14 +54,14 @@ public class SistemaDeNotificaciones {
     }
 
     public void obtenerNotificacionesDeUsuario(int usuarioId) {
-        var notificaciones = notificacionDao.obtenerNotificacionesPorUsuario(usuarioId);
+        var notificaciones = notificacionService.obtenerNotificacionesPorUsuario(usuarioId);
         for (Notificacion notificacion : notificaciones) {
             System.out.println("Notificación para usuario " + usuarioId + ": " + notificacion.getMensaje());
         }
     }
 
     public void marcarNotificacionComoLeida(int notificacionId) {
-        boolean resultado = notificacionDao.marcarNotificacionComoLeida(notificacionId);
+        boolean resultado = notificacionService.marcarNotificacionComoLeida(notificacionId);
         if (resultado) {
             System.out.println("Notificación marcada como leída.");
         } else {

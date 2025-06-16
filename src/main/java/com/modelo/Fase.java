@@ -1,6 +1,5 @@
 package com.modelo;
 
-import com.data_access_object.FaseDao;
 import javafx.beans.property.*;
 import lombok.Getter;
 import lombok.Setter;

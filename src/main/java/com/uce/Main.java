@@ -1,8 +1,8 @@
 package com.uce;
 
-import com.data_access_object.FaseDao;
-import com.data_access_object.ProyectoDao;
-import com.data_access_object.ProyectoUsuarioDao;
+import com.services.FaseService;
+import com.services.ProyectoService;
+import com.services.ProyectoUsuarioService;
 
 import com.modelo.Fase;
 import com.modelo.Proyecto;
@@ -19,9 +19,9 @@ public class Main {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws InterruptedException {
-        ProyectoDao proyectoDao = new ProyectoDao();
-        ProyectoUsuarioDao proyectoUsuarioDao = new ProyectoUsuarioDao();
-        FaseDao faseDao = new FaseDao();
+        ProyectoService proyectoService = new ProyectoService();
+        ProyectoUsuarioService proyectoUsuarioService = new ProyectoUsuarioService();
+        FaseService faseService = new FaseService();
 
         // Programador 2: Login
         System.out.println("Opciones:");
@@ -43,9 +43,9 @@ public class Main {
                     System.out.println("1. Ver proyectos");
 
                     //Opción 1 (cargar varios proyectos en pantalla)
-                    ObservableList<Proyecto> a = proyectoDao.obtenerProyectosPaginado(2, 10);
+                    ObservableList<Proyecto> a = proyectoService.obtenerProyectosPaginado(2, 10);
                     //Opción 2 (cargar uno solo)
-                    Proyecto b = proyectoDao.obtenerProyectoPorId(2);
+                    Proyecto b = proyectoService.obtenerProyectoPorId(2);
 
 
                     System.out.println("2. Crear proyecto");
@@ -74,10 +74,10 @@ public class Main {
                                 case 1:
                                     System.out.println("*Cargar fases");
                                     System.out.println("1. Ver detalles");
-                                    ObservableList<Fase> q = proyectoDao.obtenerFasesDeProyecto(1);
+                                    ObservableList<Fase> q = proyectoService.obtenerFasesDeProyecto(1);
 
                                     //AL VER LAS fases se llamará al método correspondiente de cada fase:
-                                    faseDao.verDetallesFase(1);
+                                    faseService.verDetallesFase(1);
 
 
                                     System.out.println("2. Crear nueva fase");
@@ -89,15 +89,15 @@ public class Main {
                                             LocalDate.of(2025, 6, 15), // fechaFin
                                             10 // proyectoId (suponiendo que pertenece al proyecto con ID 10)
                                     );
-                                    boolean w = faseDao.crearFase(faseSimulada);
+                                    boolean w = faseService.crearFase(faseSimulada);
 
                                     break;
                                 case 2:
                                     System.out.println("*Miembros asignados al proyecto:");
                                     // al dar doble clic se llamaría a:
-                                    ObservableList<ProyectoUsuario> r = proyectoUsuarioDao.obtenerUsuariosDeProyecto(1);
+                                    ObservableList<ProyectoUsuario> r = proyectoUsuarioService.obtenerUsuariosDeProyecto(1);
                                     //otra opción
-                                    ObservableList<ProyectoUsuario> g = proyectoUsuarioDao.obtenerUsuariosDeProyectoPaginado(1, 2, 3);
+                                    ObservableList<ProyectoUsuario> g = proyectoUsuarioService.obtenerUsuariosDeProyectoPaginado(1, 2, 3);
 
 
                                     break;
@@ -105,13 +105,13 @@ public class Main {
                                     System.out.println("*Agregar persona al proyecto");
                                     // Proyecto usuario asigna un proyecto a un usuario, recibe el id del proyecto, el id del usuario y el rol.
                                     ProyectoUsuario proyectoUsuario = new ProyectoUsuario(1, 1, "cafetero");
-                                    boolean c = proyectoUsuarioDao.asignarUsuarioAProyecto(proyectoUsuario);
+                                    boolean c = proyectoUsuarioService.asignarUsuarioAProyecto(proyectoUsuario);
 
                                     break;
                                 case 4:
                                     System.out.println("*Eliminar persona del proyecto");
                                     //eliminarAsignación REcibe la id del proyecto y del usuario
-                                    boolean d = proyectoUsuarioDao.eliminarAsignacion(1, 3);
+                                    boolean d = proyectoUsuarioService.eliminarAsignacion(1, 3);
 
                                     break;
                                 default:
@@ -122,7 +122,7 @@ public class Main {
                         case 2:
                             System.out.println("*Crear nuevo proyecto...");
                             Proyecto nuevo = new Proyecto();
-                            boolean fg = proyectoDao.crearProyecto(nuevo);
+                            boolean fg = proyectoService.crearProyecto(nuevo);
 
 
                             break;

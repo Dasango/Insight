@@ -1,8 +1,6 @@
 package com.modelo;
 
-import com.data_access_object.ProyectoUsuarioDao;
 import javafx.beans.property.*;
-import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,14 +42,14 @@ public class Usuario {
 /*
     //Con paginación
     public ObservableList<ProyectoUsuario> verProyectos(int limit, int offset) {
-        ProyectoUsuarioDao dao = new ProyectoUsuarioDao();
+        ProyectoUsuarioService dao = new ProyectoUsuarioService();
         return dao.obtenerProyectosDeUsuarioPaginado(this.getId(), limit, offset);
     }
 
 
     //SI no quieres usar paginación:
     public ObservableList<ProyectoUsuario> verProyectos() {
-        ProyectoUsuarioDao dao = new ProyectoUsuarioDao();
+        ProyectoUsuarioService dao = new ProyectoUsuarioService();
         return dao.obtenerProyectosDeUsuario(this.getId());
     }
 */
