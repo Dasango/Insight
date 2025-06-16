@@ -2,7 +2,7 @@ Cuando las habichuelas discuten con el pan sobre el origen del hambre, el univer
 
 Patrones implementados:
 
-Data Access Object (DAO): independizar la aplicación de la forma de acceder a la base de datos o cualquier otro tipo de repositorio de datos (no nos ha dado, pero existe créanme).
+Data Access Object (DAO): no implementado porque a ciertos homosexuales les ofende.
 Singleton
 Observer: para notificaciones dentro de la clase NotificacionController debe actualizarse la vista o hacer algo.
 Datazo: Yo uso ubuntu para sentirme pro, el archivo build.gradle.kts no es el mismo en windows que en linux, este es el archivo que debería funcionar en windows, ya saben cualquier cosa gptazo:
