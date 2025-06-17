@@ -7,7 +7,7 @@ public class Main {
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws InterruptedException {
 
-        //Login
+        //Login  -- JONA
         System.out.println("Opciones:");
         System.out.println("1. Ingresar");
         System.out.println("2. Crear user");
@@ -17,7 +17,7 @@ public class Main {
             //Opciones principales
             System.out.println("Opciones");
             System.out.println("1. Ver projectos");
-            System.out.println("2. Ver bandeja de entrada");
+            System.out.println("2. Ver bandeja de entrada"); //JONA
             System.out.println("3. Chat AI"); //todo adrian
             switch (sc.nextInt()){
                 case 1:
