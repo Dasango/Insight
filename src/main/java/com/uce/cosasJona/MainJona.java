@@ -7,7 +7,7 @@ public class MainJona {
     public static void main(String[] args) throws InterruptedException {
         UsuarioService servicio = new UsuarioService();
         Scanner scanner = new Scanner(System.in);
-
+        Usuario u = new Usuario("","","");
         while (true) {
             System.out.println("\nOpciones:");
             System.out.println("1. Ingresar");
@@ -18,10 +18,10 @@ public class MainJona {
             String opcion = scanner.nextLine();
             switch (opcion) {
                 case "1":
-                    servicio.login();
+                    servicio.login("","");
                     break;
                 case "2":
-                    servicio.crearUsuario();
+                    servicio.crearUsuario(u);
                     break;
                 case "0":
                     System.out.println("👋 Saliendo...");
