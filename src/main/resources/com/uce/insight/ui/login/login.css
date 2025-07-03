@@ -1,0 +1,37 @@
+/* Texto general en blanco */
+.white-text, .title-text, .frosted-field {
+    -fx-text-fill: white;
+}
+
+/* Fondo borroso efecto "frosted glass" */
+#frostedRect {
+    -fx-fill: rgba(0, 0, 0, 0.1); /* transparencia */
+    -fx-stroke: #AAAAAA; /* outline gris */
+}
+
+/* Campos de texto con fondo transparente */
+.frosted-field {
+    -fx-background-color: transparent;
+    -fx-border-color: #AAAAAA;
+    -fx-border-width: 1;
+    -fx-prompt-text-fill: #CCCCCC;
+    -fx-border-radius: 20;
+}
+
+/* Botones blancos con texto negro */
+.white-button {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-border-radius: 8;
+    -fx-border-color: #ccc; /* opcional: agrega un borde suave */
+    -fx-border-width: 1;
+}
+
+/* Hover: fondo más oscuro */
+.white-button:hover {
+    -fx-background-color: #CCCCCC; /* gris claro al pasar el mouse */
+    -fx-cursor: hand; /* opcional: cambia cursor a mano */
+}
+

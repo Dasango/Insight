@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMouseClicked="#handleClick" prefHeight="202.0" prefWidth="312.0" style="-fx-border-radius: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uce.insight.ui.main.ProjectController">
+
+    <children>
+      <ImageView fitHeight="208.0" fitWidth="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@BoxyBackground.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" fill="#0000009e" height="117.0" layoutY="91.0" stroke="#e1e1e1" strokeType="INSIDE" strokeWidth="0.0" width="312.0" />
+        <!-- Nombre del Proyecto -->
+        <Label fx:id="projectNameLabel" layoutX="11.0" layoutY="89.0" prefHeight="39.0" prefWidth="276.0" text="Nombre Proyecto" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font name="Arial Bold" size="22.0" />
+         </font></Label>
+
+        <Label fx:id="activityLabel" layoutX="17.0" layoutY="143.0" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+    </children>
+</AnchorPane>

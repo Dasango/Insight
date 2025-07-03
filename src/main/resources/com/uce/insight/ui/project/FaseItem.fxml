@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox fx:id="faseItemContainer" alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="780.0" spacing="20" style="-fx-background-color: #3a3a3a; -fx-background-radius: 5; -fx-padding: 10;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uce.insight.ui.project.FaseItemController">
+    <VBox spacing="5">
+        <Label fx:id="nombreLabel" styleClass="fase-nombre" text="Nombre Fase" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="descripcionLabel" styleClass="fase-descripcion" text="Descripción de la fase" textFill="#bbbbbb" wrapText="true" />
+    </VBox>
+    <Region HBox.hgrow="ALWAYS" />
+    <VBox alignment="CENTER_RIGHT" spacing="5">
+        <Label fx:id="fechasLabel" text="Inicio: hoy - Fin: +7 días" textFill="#bbbbbb" />
+        <HBox spacing="10">
+            <Button mnemonicParsing="false" onAction="#handleEliminar" text="Eliminar" style="-fx-background-color: #ff4444;" />
+        </HBox>
+    </VBox>
+</HBox>

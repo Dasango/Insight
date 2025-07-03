@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="450.0" prefWidth="669.0" stylesheets="@../login/register.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uce.insight.ui.project.CreateProjectController">
+    <children>
+        <ImageView fitHeight="450.0" fitWidth="773.0" layoutX="-208.0" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-208.0" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="0.0">
+            <image>
+                <Image url="@../login/Background.jpg" />
+            </image>
+            <effect>
+                <Lighting surfaceScale="0.0">
+                    <bumpInput>
+                        <Shadow />
+                    </bumpInput>
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+        </ImageView>
+
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="450.0" layoutX="190.0" layoutY="250.0" stroke="WHITE" strokeType="INSIDE" width="410.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+        <VBox layoutX="277.0" layoutY="24.0" prefHeight="345.0" prefWidth="363.0" style="-fx-spacing: 10;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="22.0">
+            <children>
+                <Text style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Crear nuevo proyecto" textAlignment="CENTER" />
+
+                <Label text="Nombre del proyecto:" />
+                <TextField fx:id="nameField" prefWidth="220.0" />
+
+                <Label text="Descripción:" />
+                <TextArea fx:id="descriptionArea" prefHeight="100.0" prefWidth="220.0" wrapText="true" />
+                 <Button onAction="#handleCreateProject" prefWidth="100.0" text="Crear" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
